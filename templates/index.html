@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Text Data</title>
+    <style>
+        /* CSS goes here */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar-brand {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px; /* Increased padding for a bigger header */
+            background: #e9ecef;
+            border-bottom: 3px solid #007bff;
+        }
+
+        header h1 {
+            font-size: 3em; /* Made the text larger */
+            color: #000; /* Text color is black */
+            margin: 20px 0; /* Added margin to move the text slightly down */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        .input-box {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #007bff;
+        }
+
+        /* New loading state style */
+        .loading {
+            color: #f4f4f9;
+            font-size: 1.2em;
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">Text Predictor</div>
+    </nav>
+
+    <header>
+        <h1>Enter Your Text Data Here</h1>
+    </header>
+
+    <main class="container">
+        <!-- Form for submitting the input -->
+        <form action="/predict" method="POST">
+            <div class="input-box">
+                <textarea id="textInput" name="text" placeholder="Enter your text here..." required></textarea>
+                <button type="submit">Predict</button>
+            </div>
+        </form>
+
+        <!-- Placeholder for prediction result -->
+        {% if prediction_text %}
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+        {% endif %}
+    </main>
+
+</body>
+</html>
